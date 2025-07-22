@@ -2,7 +2,6 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  list-style-type: none;
   padding: 35px 0 ;
   box-shadow: var(--shadow-soft);
 }
@@ -19,5 +18,11 @@
   font-size: 20px;
   a:hover {
     color: #f45b6b;
+  }
+}
+
+.chantflow-logo-dark {
+  img {
+    filter: invert(100%);
   }
 }

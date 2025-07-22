@@ -66,3 +66,18 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 } */
+
+body {
+  margin: 0;
+  font-family: "Torrent W03 Medium";
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+

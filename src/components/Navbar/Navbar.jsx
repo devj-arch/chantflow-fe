@@ -5,10 +5,12 @@ import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 function Navbar() {
+
   return (
     <div className='nav'>
       <Link to="/" className='chantflow'>
-        <div className='chantflow-logo'><img src={chantflowLogo} alt='chantflow logo'></img></div>
+      {/* TODO: fix on load */}
+        <div className={localStorage.getItem('theme')==='dark' ? 'chantflow-logo-dark' : 'chantflow-logo'}><img src={chantflowLogo} alt='chantflow logo'></img></div>
         <div className='chantflow-title'>ChantFlow</div>
       </Link>
       <div className='menu-bar'>

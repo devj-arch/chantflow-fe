@@ -14,6 +14,16 @@
   --shadow-soft: 0 4px 20px rgba(108, 91, 123, 0.1);
 }
 
+body.dark {
+  --color-bg: #1e1e1e;
+  --color-primary: #bb86fc;
+  --color-secondary: #3700b3;
+  --color-accent: #03dac6;
+  --color-highlight: #fbc02d;
+  --color-text: #ffffff;
+  --color-muted: #b0b0b0;
+}
+
 /* ====== Base Styling ====== */
 body {
   margin: 0;
