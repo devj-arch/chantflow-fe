@@ -1,0 +1,23 @@
+.nav {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  list-style-type: none;
+  padding: 35px 0 ;
+  box-shadow: var(--shadow-soft);
+}
+
+.chantflow {
+  display: flex;
+  gap: 15px;
+  .chantflow-title {
+    font-size: 40px;
+  }
+}
+
+.menu-bar {
+  font-size: 20px;
+  a:hover {
+    color: #f45b6b;
+  }
+}

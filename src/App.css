@@ -1,3 +1,4 @@
+@import url(https://db.onlinewebfonts.com/c/c481f64b0f240989fa9c6971ea78673f?family=Torrent+W03+Medium);
 /* ====== Root Theme Variables ====== */
 :root {
   --color-bg: #EFDFD9;
@@ -16,7 +17,7 @@
 /* ====== Base Styling ====== */
 body {
   margin: 0;
-  font-family: var(--font-body);
+  font-family: "Torrent W03 Medium";
   background-color: var(--color-bg);
   color: var(--color-text);
 }
@@ -24,5 +25,6 @@ body {
 a {
   text-decoration: none;
   color: inherit;
+  cursor: pointer;
 }
 
