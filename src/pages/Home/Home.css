@@ -1,8 +1,16 @@
-.hero {
+.home {
   display: flex;
+  margin:  auto;
   justify-content: center;
-  align-items: center;
-  height: 850px;
-  color: #483A4E;
+  flex-flow: column nowrap;
   font-size: 20px;
+  gap: 40px;
+  color: var(--color-text);
 }
+
+.home-activities {
+  display: flex;
+  gap: 15px;
+  /* justify-content: center; */
+}
+

@@ -5,12 +5,18 @@
   --color-primary: #a188a6;
   --color-secondary: #6c5b7b;
   --color-accent: #f67280;
+  --color-button: #E69B8A;
+  --color-btn-stroke: #E79D8D;
+  --color-card: #F9EDE2;
+  --color-card-stroke: #f9efe4;
+  --color-font-button: #faede9;
   --color-highlight: #ffd97d;
-  --color-text: #2e2e2e;
+  --color-text: #483a4e;
   --color-muted: #5e5e5e;
   --font-heading: 'Playfair Display', serif;
   --font-body: 'Open Sans', sans-serif;
-  --radius-card: 16px;
+  --radius-button: 30px;
+  --radius-card: 20px;
   --shadow-soft: 0 4px 20px rgba(108, 91, 123, 0.1);
 }
 
@@ -36,5 +42,9 @@ a {
   text-decoration: none;
   color: inherit;
   cursor: pointer;
+}
+
+.page-content {
+  flex: 1;
 }
 

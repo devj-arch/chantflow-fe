@@ -5,7 +5,6 @@ import ThemeToggle from "../ThemeToggle/ThemeToggle"
 
 function Footer() {
 
-
   return (
     <footer className="footer">
       <div className="footer-section">

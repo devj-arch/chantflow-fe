@@ -20,6 +20,7 @@ function ThemeToggle() {
 
   const handleToggle = () => {
     setDarkMode(!darkMode);
+    window.location.reload();
   }
   // TODO: fix button styling
   return (

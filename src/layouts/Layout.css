@@ -1,0 +1,7 @@
+.app-wrapper {
+  width: 1000px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
