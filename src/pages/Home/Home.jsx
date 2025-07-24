@@ -5,12 +5,14 @@ import Card from '../../components/Card/Card';
 import bellIcon from '../../assets/bell-icon.svg'
 import calendarIcon from '../../assets/calendar-icon.svg'
 import soundIcon from '../../assets/sound-icon.svg'
+import SoundTrack from '../../components/SoundTrack/SoundTrack';
 
 function Home() {
   return (
     <div className='home'>
       <Hero />
-      <div className='sound-track'></div>
+      {/* <div className='sound-track'></div> */}
+      <SoundTrack />
       <div className='home-activities'>
         <Card className='home-reminders' image={bellIcon} title={'Daily Reminders'} desc1={'Stay on track with'} desc2={'helpful notifications.'} />
 

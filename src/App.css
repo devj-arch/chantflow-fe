@@ -9,10 +9,13 @@
   --color-btn-stroke: #E79D8D;
   --color-card: #F9EDE2;
   --color-card-stroke: #f9efe4;
+  --color-sound-icon: #d9c0ce;
   --color-font-button: #faede9;
   --color-highlight: #ffd97d;
   --color-text: #483a4e;
   --color-muted: #5e5e5e;
+  --color-progress: #ab8fae;
+  --color-player: #ac8ead;
   --font-heading: 'Playfair Display', serif;
   --font-body: 'Open Sans', sans-serif;
   --radius-button: 30px;
