@@ -1,0 +1,64 @@
+.chant {
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  /* align-items: center; */
+  gap: 30px;
+}
+
+.chant-top {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  /* gap: 10px; */
+  h2 {
+    font-size: 40px;
+  }
+}
+
+.chant-image {
+  position: relative;
+  img {
+    border-radius: 50%;
+    height: 300px;
+    border: 5px solid var(--color-progress);
+  }
+}
+
+.beads {
+  position: absolute;
+  left: 90%;
+  img {
+    height: 600px;
+  }
+}
+
+.chant-counter {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 10px solid var(--color-progress);
+  position: relative;
+}
+
+.chant-progress {
+
+
+}
+
+.chant-count {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  font-size: 90px;
+  background-color: var(--color-bg);
+  border: none;
+  color: var(--color-text);
+}
+
+.chant-features {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 20px;
+}

@@ -8,6 +8,7 @@ import Layout from './layouts/Layout.jsx'
 import About from './pages/About/About.jsx'
 import Contact from './pages/Contact/Contact.jsx'
 import Terms from './pages/Terms/Terms.jsx'
+import Chant from './pages/Chant/Chant.jsx'
 
 const router = createBrowserRouter([
     {path:'/', element: <Layout />, children: [
@@ -15,6 +16,7 @@ const router = createBrowserRouter([
       {path: '/about', element: <About /> },
       {path: '/contact', element: <Contact /> },
       {path: '/terms', element: <Terms /> },
+      {path: '/chant', element: <Chant /> },
     ]}
   ])
 
