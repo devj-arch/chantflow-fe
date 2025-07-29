@@ -15,6 +15,7 @@ function Navbar() {
       </Link>
       <div className='menu-bar'>
         <li><Link to="/">Home</Link></li>
+        <li><Link to="/explore">Explore</Link></li>
         <li><Link to="/chant">Chant</Link></li>
       </div>
     </div>

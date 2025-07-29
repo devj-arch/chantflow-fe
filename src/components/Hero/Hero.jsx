@@ -9,7 +9,7 @@ function Hero() {
         <div className='hero-description'>
           <h1>Find Your Inner Rhythm</h1>
           <p>Chant daily, track your progress, and join a spiritual community</p>
-          <button className='begin-button'>Begin Now</button>
+          <button className='begin-button primary-button'>Begin Now</button>
         </div>
         <div className='hero-image'>
           <img src={calmPerson} alt='calm person'></img>
