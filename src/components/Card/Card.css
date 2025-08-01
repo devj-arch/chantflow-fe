@@ -1,0 +1,21 @@
+.card {
+  background-color: var(--color-card);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border-card-stroke);
+  display: flex;
+  flex-flow: column;
+  font-size: 18px;
+  line-height: 28px;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  width: 30%;
+  font-size: 18px;
+  p {
+    line-height: 5px;
+  }
+}
+
+.card-dark {
+  background-color: gray;
+}

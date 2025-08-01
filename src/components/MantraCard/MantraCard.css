@@ -1,0 +1,14 @@
+.mantra-card-wrapper {
+  display: flex;
+  padding: 15px;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--color-card);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border-card-stroke);
+}
+
+.card-right {
+  text-align: right;
+}

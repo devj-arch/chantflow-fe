@@ -1,0 +1,81 @@
+.sound-track {
+  display: flex;
+  flex-flow: nowrap;
+  height: 255px;
+  border-radius: var(--radius-card);
+}
+
+.sound-track-left {
+  position: relative;
+  width: 260px;
+  background-color: var(--color-sound-icon);
+  border-top-left-radius: var(--radius-card);
+  border-bottom-left-radius: var(--radius-card);
+}
+
+.sound-track-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+.sound-track-right {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 740px;
+  background-color: var(--color-card);
+  justify-content: center;
+  gap: 50px;
+  border-top-right-radius: var(--radius-card);
+  border-bottom-right-radius: var(--radius-card);
+}
+
+.sound-track-details {
+  display: flex;
+  flex-flow: column nowrap;
+  position: relative;
+  top: 10%;
+}
+
+.track-title {
+  font-size: 30px;
+}
+
+.sound-tracker {
+  position: relative;
+  height: 10px;
+  border-radius: 10px;
+  width: 450px;
+  background-color: var(--color-bg);
+}
+
+.progress-bar {
+  position: absolute;
+  height: 10px;
+  top: 0;
+  left: 0;
+  border-radius: 10px;
+  width: 100px;
+  background-color: var(--color-progress);
+}
+
+.play-button {
+  border-radius: 50%;
+  height: 90px;
+  width: 90px;
+  align-self: center;
+  background-color: var(--color-player);
+  border: none;
+  img {
+    translate: 10% 5%;
+  }
+
+}
+
+
+.sound-time {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 25px;
+}

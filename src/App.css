@@ -1,42 +1,73 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@import url(https://db.onlinewebfonts.com/c/c481f64b0f240989fa9c6971ea78673f?family=Torrent+W03+Medium);
+/* ====== Root Theme Variables ====== */
+:root {
+  --color-bg: #EFDFD9;
+  --color-primary: #a188a6;
+  --color-secondary: #6c5b7b;
+  --color-accent: #f67280;
+  --color-button: #E69B8A;
+  --color-btn-stroke: #E79D8D;
+  --color-card: #F9EDE2;
+  --color-card-stroke: #f9efe4;
+  --color-sound-icon: #d9c0ce;
+  --color-font-button: #faede9;
+  --color-highlight: #ffd97d;
+  --color-text: #483a4e;
+  --color-muted: #5e5e5e;
+  --color-progress: #ab8fae;
+  --color-player: #ac8ead;
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Open Sans', sans-serif;
+  --radius-button: 30px;
+  --radius-card: 20px;
+  --shadow-soft: 0 4px 20px rgba(108, 91, 123, 0.1);
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+body.dark {
+  --color-bg: #1e1e1e;
+  --color-primary: #bb86fc;
+  --color-secondary: #3700b3;
+  --color-accent: #03dac6;
+  --color-highlight: #fbc02d;
+  --color-text: #ffffff;
+  --color-muted: #b0b0b0;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* ====== Base Styling ====== */
+body {
+  margin: 0;
+  font-family: "Torrent W03 Medium";
+  background-color: var(--color-bg);
+  color: var(--color-text);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
 
-.card {
-  padding: 2em;
+.page-content {
+  flex: 1;
 }
 
-.read-the-docs {
-  color: #888;
+.primary-button {
+  background-color: var(--color-button);
+  border: 2px solid var(--color-btn-stroke);
+  border-radius: var(--radius-button);
+  color: var(--color-font-button);
+  font-size: 25px;
+  font-weight: 700;
+  padding: 15px 30px;
+}
+
+.secondary-button {
+  background-color: var(--color-bg);
+  border: 2px solid var(--color-btn-stroke);
+  border-radius: var(--radius-button);
+  color: var(--color-text);
+
+  font-size: 25px;
+  font-weight: 700;
+  padding: 15px 30px;
 }

@@ -1,0 +1,16 @@
+.deity-card-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  p {
+    font-size: 30px;
+  }
+  img {
+    border-radius: 50%;
+    border: 5px solid var(--color-progress);
+  }
+}
+
+.card-name {
+  color: var(--color-text);
+}

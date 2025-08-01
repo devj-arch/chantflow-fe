@@ -1,0 +1,20 @@
+.explore-gods {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  gap: 15px;
+  h2 {
+    font-size: 40px;
+  }
+}
+
+.explore-mantras {
+  padding-top: 10px;
+  h2 {
+    font-size: 35px;
+  }
+}
+
+.mantra-list {
+  
+}

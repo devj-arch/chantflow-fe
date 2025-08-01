@@ -1,0 +1,18 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 17px;
+  margin: 100px 0;
+}
+
+.footer-section {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.ambient-toggle {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
