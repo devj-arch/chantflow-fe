@@ -10,6 +10,8 @@ import Contact from './pages/Contact/Contact.jsx'
 import Terms from './pages/Terms/Terms.jsx'
 import Chant from './pages/Chant/Chant.jsx'
 import Explore from './pages/Explore/Explore.jsx'
+import { Provider } from 'react-redux'
+import { store } from './app/store.js'
 
 const router = createBrowserRouter([
     {path:'/', element: <Layout />, children: [
@@ -17,13 +19,15 @@ const router = createBrowserRouter([
       {path: '/about', element: <About /> },
       {path: '/contact', element: <Contact /> },
       {path: '/terms', element: <Terms /> },
-      {path: '/chant', element: <Chant /> },
+      {path: '/chant/:mantraId', element: <Chant /> },
       {path: '/explore', element: <Explore /> },
     ]}
   ])
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </StrictMode>,
 )

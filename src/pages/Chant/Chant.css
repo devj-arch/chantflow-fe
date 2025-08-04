@@ -57,6 +57,41 @@
   color: var(--color-text);
 }
 
+.chant-reset {
+  position: absolute;
+  bottom: 0px;
+  right: -50px;
+}
+
+.chant-reset-button {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-card);
+  border: 2px solid var(--color-progress);
+}
+
+.mala-count {
+  /* font-family: "Torrent W03 Medium";
+  color: var(--color-text); */
+  position: absolute;
+  top: 0px;
+  left: 40px;
+  border: 2px solid var(--color-progress);
+  /* background-color: var(--color-primary); */
+  font-weight: bold;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 .chant-features {
   display: flex;
   flex-flow: row nowrap;
