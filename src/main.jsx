@@ -12,6 +12,8 @@ import Chant from './pages/Chant/Chant.jsx'
 import Explore from './pages/Explore/Explore.jsx'
 import { Provider } from 'react-redux'
 import { store } from './app/store.js'
+import Login from './pages/Login/Login.jsx'
+import Signup from './pages/Signup/Signup.jsx'
 
 const router = createBrowserRouter([
     {path:'/', element: <Layout />, children: [
@@ -21,6 +23,8 @@ const router = createBrowserRouter([
       {path: '/terms', element: <Terms /> },
       {path: '/chant/:mantraId', element: <Chant /> },
       {path: '/explore', element: <Explore /> },
+      {path: '/login', element: <Login /> },
+      {path: '/signup', element: <Signup /> },
     ]}
   ])
 

@@ -14,10 +14,26 @@ export const api = createApi({
     getDeities: builder.query({
       query: () => '/deities',
     }),
+    login: builder.mutation({
+      query: ({ email, password }) => ({
+        url: "/auth/login",
+        method: "POST",
+        body: { email, password },
+      }),
+    }),
+    signup: builder.mutation({
+      query: ({ name, email, password }) => ({
+        url: "/auth/signup",
+        method: "POST",
+        body: { name, email, password },
+      }),
+    }),
   }),
 });
 
 export const {
   useGetMantrasQuery,
   useGetDeitiesQuery,
+  useLoginMutation,
+  useSignupMutation,
 } = api;
