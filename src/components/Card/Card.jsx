@@ -1,9 +1,9 @@
 import React from "react";
 import "./Card.css";
 
-const Card = ({ image, icon, title, desc1, desc2 }) => {
+const Card = ({ image, icon, title, desc1, desc2, onClick }) => {
   return (
-    <div
+    <div onClick={onClick}
       className={
         localStorage.getItem("theme") === "light" ? "card" : "card card-dark"
       }
