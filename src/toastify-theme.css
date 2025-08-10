@@ -1,0 +1,48 @@
+.chant-toast-info,
+.Toastify__toast--info {
+  background: #B3CDE0 !important;
+  border: 2px solid #89AFC4 !important;
+  color: #2E3E4E !important;
+}
+
+.chant-toast-success,
+.Toastify__toast--success {
+  background: #B5EAD7 !important;
+  border: 2px solid #8ACBB2 !important;
+  color: #1F3B2C !important;
+}
+
+.chant-toast-warning,
+.Toastify__toast--warning {
+  background: #FDE2B1 !important;
+  border: 2px solid #E5C58F !important;
+  color: #5C4B1F !important;
+}
+
+.chant-toast-error,
+.Toastify__toast--error {
+  background: #F5B5B5 !important;
+  border: 2px solid #DA8E8E !important;
+  color: #4E2B2B !important;
+}
+
+/* Progress bars */
+.chant-toast-progress.Toastify__progress-bar--info,
+.Toastify__progress-bar--info {
+  background: #89AFC4 !important;
+}
+
+.chant-toast-progress.Toastify__progress-bar--success,
+.Toastify__progress-bar--success {
+  background: #8ACBB2 !important;
+}
+
+.chant-toast-progress.Toastify__progress-bar--warning,
+.Toastify__progress-bar--warning {
+  background: #E5C58F !important;
+}
+
+.chant-toast-progress.Toastify__progress-bar--error,
+.Toastify__progress-bar--error {
+  background: #DA8E8E !important;
+}

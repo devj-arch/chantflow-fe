@@ -1,25 +1,28 @@
-import React, { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
-import "./Login.css"
-import { useLoginMutation } from "../../app/api.js"
-import LoadingScreen from '../../components/LoadingScreen/LoadingScreen.jsx'
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "./Login.css";
+import { useLoginMutation } from "../../app/api.js";
+import LoadingScreen from "../../components/LoadingScreen/LoadingScreen.jsx";
+import { toast } from "react-toastify";
 
 function Login() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [login, {isLoading}] = useLoginMutation()
-  const navigate = useNavigate()
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [login, { isLoading }] = useLoginMutation();
+  const navigate = useNavigate();
 
-  if(isLoading) return <LoadingScreen />
-  const handleLogin = async() => {
-    try {
-      await login({ email, password }).unwrap()
-      alert('Login Successful!')
-      navigate("/")
-    } catch (err) {
-      alert(err?.data?.msg || "Invalid email or password");
-    }
+  if (isLoading) {
+    toast.info("Checking Credentials...");
   }
+  const handleLogin = async () => {
+    try {
+      await login({ email, password }).unwrap();
+      toast.success("Login Successful!");
+      navigate("/");
+    } catch (err) {
+      toast.error(err?.data?.msg || "Invalid email or password");
+    }
+  };
 
   return (
     <div className="login">
@@ -52,7 +55,11 @@ function Login() {
           </div>
         </div>
         <div className="login-bottom">
-          <button type="button" className="login-button primary-button" onClick={handleLogin}>
+          <button
+            type="button"
+            className="login-button primary-button"
+            onClick={handleLogin}
+          >
             Log In
           </button>
           <div className="signup-link">

@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 import "./Signup.css"
 import { useSignupMutation } from "../../app/api.js"
 import LoadingScreen from '../../components/LoadingScreen/LoadingScreen.jsx'
+import { toast } from "react-toastify";
 
 function Signup() {
   const [name, setName] = useState('')
@@ -11,18 +12,18 @@ function Signup() {
   const [signup, {isLoading}] = useSignupMutation()
   const navigate = useNavigate()
 
-  if(isLoading) return <LoadingScreen />
+  if(isLoading) toast.info('Signing you up...')
   const handleSignup = async() => {
     if (!name || !email || !password) {
-      alert("Please fill in all fields");
+      toast.dismiss("Please fill in all fields");
       return;
     }
     try {
       await signup({ name, email, password }).unwrap()
-      alert('Signup Successful!')
+      toast.success('Signup Successful!')
       navigate("/login")
     } catch (err) {
-      alert(err?.data?.msg || "Signup failed");
+      toast.error(err?.data?.msg || "Signup failed");
     }
   }
 
