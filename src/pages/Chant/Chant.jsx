@@ -11,6 +11,7 @@ import ChantGoalModal from '../../components/ChantGoalModal/ChantGoalModal';
 import ChantIntervalModal from '../../components/ChantIntervalModal/ChantIntervalModal';
 import bell from '../../sounds/mixkit-bike-notification-bell-590.mp3'
 import './Chant.css';
+import { toast } from 'react-toastify';
 
 export default function Chant() {
   const { mantraId } = useParams();
@@ -83,7 +84,7 @@ export default function Chant() {
     if(durationMinutes) {
         durationId = setInterval(() => {
         if(Date.now() >= endTime) {
-          console.log('Session is complete.')
+          toast.success("Session complete!")
           clearInterval(durationId)
           if(bellId) clearInterval(bellId)
         }
@@ -95,6 +96,7 @@ export default function Chant() {
           clearInterval(bellId)
         } else {
           console.log('🔔 Bell sound!')
+          toast.info('🔔 Bell rang!')
           playBell()
         }
       }, bellIntervalMinutes * 60 * 1000);
@@ -191,12 +193,12 @@ export default function Chant() {
           desc1="Timer"
           desc2="Bell Interval"
         />
-        <Card
+        {/* <Card
           className="chant-interval"
           icon={<FontAwesomeIcon icon={faBell} size="xl" style={{ color: "var(--color-player)" }} />}
           title="Bell Interval"
           desc1="5 min"
-        />
+        /> */}
         <Card
           onClick={() => setAutoRepeatModalOpen(true)}
           className="chant-repeat"

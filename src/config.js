@@ -1,5 +1,7 @@
 const CONFIG = {
-  BACKEND_URL: "http://localhost:9001" // local url
+  BACKEND_URL: "chantflow-be.onrender.com" // hosted backend
+  // BACKEND_URL: "http://localhost:9001" // local url
+
 };
 
 export default CONFIG;
