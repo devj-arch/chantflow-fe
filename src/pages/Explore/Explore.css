@@ -12,9 +12,10 @@
   padding-top: 10px;
   h2 {
     font-size: 35px;
+    cursor: pointer;
   }
 }
 
 .mantra-list {
-  
+
 }

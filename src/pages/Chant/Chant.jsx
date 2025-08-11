@@ -14,6 +14,7 @@ import './Chant.css';
 import { toast } from 'react-toastify';
 import InfoBox from '../../components/InfoBox/InfoBox';
 import { Tooltip } from 'react-tooltip';
+import imageMap from '../../data/DeityList';
 
 export default function Chant() {
   const { mantraId } = useParams();
@@ -29,6 +30,7 @@ export default function Chant() {
   });
 
   const mantra = mantras?.find(m => m._id === mantraId);
+  console.log('mantra: ', mantra);
   const currentCount = chantCounts[mantraId] || 0;
 
   useEffect(() => {
@@ -162,7 +164,7 @@ export default function Chant() {
       <InfoBox />
       <div className="chant-top">
         <div className="chant-image">
-          <img src={chantImg} alt="chant-image" />
+          <img src={imageMap[mantra?.deityId?.image] || null} alt="chant-image" />
         </div>
         <h2>{mantra.name}</h2>
         <div className="chant-counter">
