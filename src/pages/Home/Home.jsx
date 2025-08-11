@@ -16,7 +16,7 @@ function Home() {
     <div className='home'>
       <Hero />
       {/* <div className='sound-track'></div> */}
-      <Link to='/chant'>
+      <Link to='/chant/6889a9aee6105b7f4256ccc9'>
         <SoundTrack />
       </Link>
       <div className='home-activities'>

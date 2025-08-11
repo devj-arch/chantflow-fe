@@ -1,4 +1,9 @@
 .deity-grid {
   display: grid;
   grid-template-columns: repeat(2, 400px);
+   img {
+    object-fit: cover;
+    height: 280px;
+    width: 280px;
+   }
 }
