@@ -57,13 +57,19 @@
   color: var(--color-text);
 }
 
+.chant-info {
+  position: absolute;
+  bottom: 0px;
+  left: -50px;
+}
+
 .chant-reset {
   position: absolute;
   bottom: 0px;
   right: -50px;
 }
 
-.chant-reset-button {
+.chant-reset-button, .chant-info-button {
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -90,7 +96,6 @@
   justify-content: center;
   align-items: center;
 }
-
 
 .chant-features {
   display: flex;
