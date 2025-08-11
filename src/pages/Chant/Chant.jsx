@@ -3,7 +3,7 @@ import Card from '../../components/Card/Card';
 import chantImg from '../../assets/chantImg.png';
 import beadsStatic from '../../assets/beads.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClock, faBell, faRepeat, faRotateLeft } from '@fortawesome/free-solid-svg-icons';
+import { faClock, faBell, faRepeat, faRotateLeft, faInfo } from '@fortawesome/free-solid-svg-icons';
 import { useParams } from 'react-router-dom';
 import { useGetMantrasQuery } from '../../app/api';
 import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
@@ -12,6 +12,8 @@ import ChantIntervalModal from '../../components/ChantIntervalModal/ChantInterva
 import bell from '../../sounds/mixkit-bike-notification-bell-590.mp3'
 import './Chant.css';
 import { toast } from 'react-toastify';
+import InfoBox from '../../components/InfoBox/InfoBox';
+import { Tooltip } from 'react-tooltip';
 
 export default function Chant() {
   const { mantraId } = useParams();
@@ -157,6 +159,7 @@ export default function Chant() {
 
   return (
     <div className="chant">
+      <InfoBox />
       <div className="chant-top">
         <div className="chant-image">
           <img src={chantImg} alt="chant-image" />
@@ -170,8 +173,26 @@ export default function Chant() {
           </div>
           <div className="chant-reset">
             <button onClick={reset} className="chant-reset-button">
-              <FontAwesomeIcon icon={faRotateLeft} size="xl" style={{ color: "var(--color-player)" }} />
+              <FontAwesomeIcon
+                icon={faRotateLeft}
+                size="xl"
+                style={{ color: "var(--color-player)" }}
+              />
             </button>
+          </div>
+          <div className="chant-info">
+            <button
+              className="chant-info-button"
+              data-tooltip-id="chantTip"
+              data-tooltip-content="Tap the counter to increase chant count ↑"
+            >
+              <FontAwesomeIcon
+                icon={faInfo}
+                size="xl"
+                style={{ color: "var(--color-player)" }}
+              />
+            </button>
+            <Tooltip id="chantTip" place="bottom" style={{ backgroundColor: 'var(--color-secondary)', color: '#fff', borderRadius: '8px', padding: '6px 10px' }} />
           </div>
         </div>
         <div className="beads mala-container">
@@ -188,7 +209,13 @@ export default function Chant() {
         <Card
           onClick={() => setSessionSettingsModalOpen(true)}
           className="chant-timer"
-          icon={<FontAwesomeIcon icon={faClock} size="xl" style={{ color: "var(--color-player)" }} />}
+          icon={
+            <FontAwesomeIcon
+              icon={faClock}
+              size="xl"
+              style={{ color: "var(--color-player)" }}
+            />
+          }
           title="Session Settings"
           desc1="Timer"
           desc2="Bell Interval"
@@ -202,7 +229,13 @@ export default function Chant() {
         <Card
           onClick={() => setAutoRepeatModalOpen(true)}
           className="chant-repeat"
-          icon={<FontAwesomeIcon icon={faRepeat} size="xl" style={{ color: "var(--color-player)" }} />}
+          icon={
+            <FontAwesomeIcon
+              icon={faRepeat}
+              size="xl"
+              style={{ color: "var(--color-player)" }}
+            />
+          }
           title="Auto Repeat"
           desc1="Repeat the chant"
           desc2="continuously."
