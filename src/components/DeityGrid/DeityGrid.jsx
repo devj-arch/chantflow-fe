@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DeityCard from '../DeityCard/DeityCard';
 import imageMap from '../../data/DeityList.js'
 import './DeityGrid.css'
@@ -10,6 +10,22 @@ import './DeityGrid.css'
 import LoadingScreen from '../LoadingScreen/LoadingScreen';
 
 function DeityGrid({deities, onSelectDeity}) {
+  const [visibleCount, setVisibleCount] = useState(4)
+  const [showBtn, setShowBtn] = useState('Show More VV')
+
+  const handleShowMore = () => {
+    setVisibleCount(prevCount => Math.min(prevCount+4, deities.length))
+    console.log('visibleCount: ', visibleCount);
+    if(visibleCount >= deities.length-4) {
+      setShowBtn('Show Less ^^')
+    } else {
+      setShowBtn('Show More VV')
+    }
+    if(showBtn==='Show Less ^^') {
+      setVisibleCount(4)
+      setShowBtn('Show More VV')
+    }
+  }
 
   // const imageMap = {
   //   'shiva.jpg': shiv,
@@ -26,11 +42,16 @@ function DeityGrid({deities, onSelectDeity}) {
 
   return (
     <div className="deity-grid">
-      {deities && deities.map((deity) => {
+      {deities && deities.slice(0, visibleCount).map((deity) => {
         const imageSrc = imageMap[deity.image] || null;
 
         return(
-        <DeityCard key={deity._id} name={deity.name} image={imageSrc} onClick={() => onSelectDeity(deity._id)}/>
+          <>
+            <DeityCard key={deity._id} name={deity.name} image={imageSrc} onClick={() => onSelectDeity(deity._id)}/>
+            <button className='secondary-button show-more' onClick={handleShowMore}>
+              {showBtn}
+            </button>
+          </>
         )
       })}
     </div>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Card from '../../components/Card/Card';
-import chantImg from '../../assets/chantImg.png';
+// import chantImg from '../../assets/chantImg.png';
 import beadsStatic from '../../assets/beads.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock, faBell, faRepeat, faRotateLeft, faInfo } from '@fortawesome/free-solid-svg-icons';
