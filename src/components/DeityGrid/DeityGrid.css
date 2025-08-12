@@ -1,9 +1,18 @@
 .deity-grid {
+  position: relative;
   display: grid;
+  padding-bottom: 40px;
   grid-template-columns: repeat(2, 400px);
    img {
     object-fit: cover;
     height: 280px;
     width: 280px;
    }
+}
+
+.show-more {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  translate: -50%;
 }

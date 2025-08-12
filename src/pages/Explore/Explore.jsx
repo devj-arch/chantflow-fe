@@ -28,13 +28,13 @@ export default function Explore() {
     <div className='explore-gods'>
       <h2>Select a Deity</h2>
       <DeityGrid deities={deities} onSelectDeity={setSelectedDeityId}/>
-      <button className='start-button primary-button'>Start Chanting</button>
-      <button className='add-deity-button secondary-button'>{<FontAwesomeIcon icon={faPlus} size="l" />} Add Your Deity</button>
+      {/* <button className='start-button primary-button'>Start Chanting</button> */}
+      <button className='add-deity-button primary-button'>{<FontAwesomeIcon icon={faPlus} size="l" />} Add Your Deity</button>
     </div>
     <div className='explore-mantras'>
       <h2>Explore Mantras</h2>
       <p>Discover, search, and choose your mantra to chant.</p>
-      <button className='add-mantra-button secondary-button'>{<FontAwesomeIcon icon={faPlus} size="l" />} Add Your Mantra</button>
+      <button className='add-mantra-button primary-button'>{<FontAwesomeIcon icon={faPlus} size="l" />} Add Your Mantra</button>
       <h2 onClick={handleShowAllMantras}>Popular Mantras</h2>
       <div className='popular-mantras mantra-list'>
         <MantraGrid mantras={filteredMantras}/>
