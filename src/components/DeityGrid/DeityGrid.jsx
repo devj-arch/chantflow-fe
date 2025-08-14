@@ -8,22 +8,24 @@ import './DeityGrid.css'
 // import lakshmi from '../../assets/lakshmi-image.png'
 // import ganpati from '../../assets/ganpati-image.png'
 import LoadingScreen from '../LoadingScreen/LoadingScreen';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleChevronDown, faCircleChevronUp, faV } from '@fortawesome/free-solid-svg-icons';
 
 function DeityGrid({deities, onSelectDeity}) {
   const [visibleCount, setVisibleCount] = useState(4)
-  const [showBtn, setShowBtn] = useState('Show More VV')
+  const [showBtn, setShowBtn] = useState(<>Show More <FontAwesomeIcon icon={faCircleChevronDown} /></>)
 
   const handleShowMore = () => {
     setVisibleCount(prevCount => Math.min(prevCount+4, deities.length))
     console.log('visibleCount: ', visibleCount);
     if(visibleCount >= deities.length-4) {
-      setShowBtn('Show Less ^^')
+      setShowBtn(<>Show Less <FontAwesomeIcon icon={faCircleChevronUp} /></>)
     } else {
-      setShowBtn('Show More VV')
+      setShowBtn(<>Show More <FontAwesomeIcon icon={faCircleChevronDown} /></>)
     }
-    if(showBtn==='Show Less ^^') {
+    if(visibleCount >= deities.length) {
       setVisibleCount(4)
-      setShowBtn('Show More VV')
+      setShowBtn(<>Show More <FontAwesomeIcon icon={faCircleChevronDown} /></>)
     }
   }
 
