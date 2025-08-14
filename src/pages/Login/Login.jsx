@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
-import { useLoginMutation } from "../../app/api.js";
+import { useGetProfileQuery, useLoginMutation } from "../../app/api.js";
 import LoadingScreen from "../../components/LoadingScreen/LoadingScreen.jsx";
 import { toast } from "react-toastify";
 
 function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [login, { isLoading }] = useLoginMutation();
-  const navigate = useNavigate();
+  const {refetch: refetchUserProfile} = useGetProfileQuery()
 
   if (isLoading) {
     toast.info("Checking Credentials...");
@@ -17,6 +18,7 @@ function Login() {
   const handleLogin = async () => {
     try {
       await login({ email, password }).unwrap();
+      await refetchUserProfile()
       toast.success("Login Successful!");
       navigate("/");
     } catch (err) {

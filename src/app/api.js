@@ -28,6 +28,16 @@ export const api = createApi({
         body: { name, email, password },
       }),
     }),
+    getProfile: builder.query({
+      query: () => '/auth/profile',
+    }),
+    logout: builder.mutation({
+      query: () => ({
+        url: '/auth/logout',
+        method: 'POST',
+        credentials: "include",
+      })
+    }),
   }),
 });
 
@@ -36,4 +46,6 @@ export const {
   useGetDeitiesQuery,
   useLoginMutation,
   useSignupMutation,
+  useGetProfileQuery,
+  useLogoutMutation
 } = api;
