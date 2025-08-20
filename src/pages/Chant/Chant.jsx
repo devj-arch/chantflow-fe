@@ -16,6 +16,8 @@ import InfoBox from '../../components/InfoBox/InfoBox';
 import { Tooltip } from 'react-tooltip';
 import imageMap from '../../data/DeityList';
 
+import {getGuestChants, incrementGuestChants, resetGuestChants} from '../../utils/chantStorage'
+
 export default function Chant() {
   const { mantraId } = useParams();
   const { data: mantras, isLoading } = useGetMantrasQuery();
@@ -37,50 +39,115 @@ export default function Chant() {
     localStorage.setItem('chantCounts', JSON.stringify(chantCounts));
   }, [chantCounts, mantraId]);
 
-  const handleClick = () => {
+  const [logChant] = useLogChantMutation()
+  // const currentCount = chantStats?.count || 0
+  const [localCount, setLocalCount] = useState(0)
+  const guestChants = getGuestChants()
+
+  useEffect(() => {
+    if(!user?._id) {
+      setLocalCount(guestChants[mantraId] || 0)
+    } else if (chantStats?.count !== undefined) {
+      setLocalCount(chantStats.count);
+    }
+  }, [chantStats]);
+
+  const mantra = mantras?.find(m => m._id === mantraId);
+
+
+  /* LocalStorage
+  setChantCounts((prev) => ({
+    ...prev,
+    [mantraId]: (prev[mantraId] || 0) + 1
+  }))
+  setLastChantTime(now)
+  */
+  const handleClick = async () => {
+    if (!mantraId) return;
+    const today = new Date().toISOString().split("T")[0];
     const now = Date.now()
     const minInterval = 1000
-    if (now - lastChantTime <= minInterval) {console.log('You are chanting too fast!')}
-    else {
-      setChantCounts((prev) => ({
-        ...prev,
-        [mantraId]: (prev[mantraId] || 0) + 1
-      }))
-      setLastChantTime(now)
+
+    if (now - lastChantTime <= minInterval) {
+      console.log("You are chanting too fast!");
+      return;
     }
-  }
+
+    // Optimistically update UI
+    setLocalCount((prev) => prev + 1);
+    setLastChantTime(now);
+
+    // Persist in backend
+    try {
+      if (user?._id ) {
+        await logChant({
+          userId: user._id,
+          mantraId,
+          date: today,
+          count: 1,
+        });
+        // Confirm with DB
+        // refetchChantStat();
+      } else {
+        const guestCount = incrementGuestChants(mantraId, 1)
+        setLocalCount(guestCount)
+      }
+    } catch (err) {
+      console.error("Failed to log chant", err);
+      // rollback UI if failed
+      setLocalCount((prev) => prev - 1);
+    }
+  };
+
 
   const startAutoChant = (settings) => {
-    const interval = 2000
+    const interval = 2000;
+    const today = new Date().toISOString().split("T")[0];
 
-    if(settings.type === 'count') {
-      let count = 0
+    if (settings.type === "count") {
+      let count = 0;
       const chantIntervalId = setInterval(() => {
-        setChantCounts(prev =>( {
-          ...prev,
-          [mantraId]: (prev[mantraId] || 0) + 1,
-        }))
-        count++
-        if(count >= settings.value) clearInterval(chantIntervalId)
+        setLocalCount((prev) => prev + 1);
+        count++;
+        if (count >= settings.value) clearInterval(chantIntervalId);
 
+        if (user?._id) {
+          logChant({
+            userId: user._id,
+            mantraId,
+            date: today,
+            count,
+          });
+        } else {
+          const newCount = incrementGuestChants(mantraId, 1)
+          setLocalCount(newCount)
+        }
       }, interval);
     }
 
-    if(settings.type === 'time') {
-      const duration = settings.value * 60 * 1000
-      const endTime = Date.now() + duration
+    if (settings.type === "time") {
+      const duration = settings.value * 60 * 1000;
+      const endTime = Date.now() + duration;
+      let count = 0;
 
       const chantIntervalId = setInterval(() => {
-        setChantCounts(prev =>( {
-          ...prev,
-          [mantraId]: (prev[mantraId] || 0) + 1,
-        }))
-        if(endTime - Date.now() <= 0) clearInterval(chantIntervalId)
-
+        setLocalCount((prev) => prev + 1);
+        count++;
+        if (endTime - Date.now() <= 0) clearInterval(chantIntervalId);
+        if (user?._id) {
+          logChant({
+            userId: user._id,
+            mantraId,
+            date: today,
+            count,
+          });
+        } else {
+          const newCount = incrementGuestChants(mantraId, 1)
+          setLocalCount(newCount)
+        }
       }, interval);
     }
-
-  }
+  };
 
   const startSession = (durationMinutes, bellIntervalMinutes) => {
     const endTime = Date.now() + durationMinutes * 60 * 1000
@@ -99,7 +166,7 @@ export default function Chant() {
         if(Date.now() >= endTime) {
           clearInterval(bellId)
         } else {
-          console.log('🔔 Bell sound!')
+
           toast.info('🔔 Bell rang!')
           playBell()
         }
@@ -114,9 +181,7 @@ export default function Chant() {
 
 
   const handleChantStart = (settings) => {
-    console.log('settings: ', settings);
-    console.log('settings.type: ', settings.type);
-    console.log('settings.value: ', settings.value);
+
     setCountdown(5)
 
     const countdownId = setInterval( () => {
@@ -143,10 +208,10 @@ export default function Chant() {
 
 
   const reset = () => {
-    setChantCounts(prev => ({
-      ...prev,
-      [mantraId]: 0,
-    }));
+    setLocalCount(0)
+    if(!user?._id) {
+      resetGuestChants(mantraId)
+    }
   };
 
   const malaCount = Math.floor(currentCount / 108);
