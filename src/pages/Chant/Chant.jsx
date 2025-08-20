@@ -5,7 +5,7 @@ import beadsStatic from '../../assets/beads.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock, faBell, faRepeat, faRotateLeft, faInfo } from '@fortawesome/free-solid-svg-icons';
 import { useParams } from 'react-router-dom';
-import { useGetMantrasQuery } from '../../app/api';
+import { useGetChantStatsQuery, useGetMantrasQuery, useGetProfileQuery, useLogChantMutation } from '../../app/api';
 import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
 import ChantGoalModal from '../../components/ChantGoalModal/ChantGoalModal';
 import ChantIntervalModal from '../../components/ChantIntervalModal/ChantIntervalModal';
@@ -20,24 +20,29 @@ import {getGuestChants, incrementGuestChants, resetGuestChants} from '../../util
 
 export default function Chant() {
   const { mantraId } = useParams();
+  const {data: user, isLoading: loadingUser, error: errorLoading, refetch: refetchUserProfile} = useGetProfileQuery()
   const { data: mantras, isLoading } = useGetMantrasQuery();
   const [lastChantTime, setLastChantTime] = useState(0);
   const [autoRepeatModalOpen, setAutoRepeatModalOpen] = useState(false);
   const [sessionSettingsModalOpen, setSessionSettingsModalOpen] = useState(false);
   // const [chantSettings, setChantSettings] = useState(null);
   const [countdown, setCountdown] = useState(null);
+
+  const {data: chantStats, isLoading: loadingChants, refetch: refetchChantStat} = useGetChantStatsQuery(
+    { userId: user?._id, mantraId },
+    { skip: !user || !mantraId } // avoid fetching before user is loaded
+  )
+  /*
+  //Local Storage
   const [chantCounts, setChantCounts] = useState(() => {
     const raw = localStorage.getItem('chantCounts');
     return raw ? JSON.parse(raw) : {};
   });
-
-  const mantra = mantras?.find(m => m._id === mantraId);
-  console.log('mantra: ', mantra);
   const currentCount = chantCounts[mantraId] || 0;
-
   useEffect(() => {
     localStorage.setItem('chantCounts', JSON.stringify(chantCounts));
   }, [chantCounts, mantraId]);
+  */
 
   const [logChant] = useLogChantMutation()
   // const currentCount = chantStats?.count || 0
@@ -214,7 +219,7 @@ export default function Chant() {
     }
   };
 
-  const malaCount = Math.floor(currentCount / 108);
+  const malaCount = Math.floor(localCount / 108);
 
   if (isLoading) {
     return <LoadingScreen />;
@@ -235,7 +240,7 @@ export default function Chant() {
         <div className="chant-counter">
           <div className="chant-progress">
             <button onClick={handleClick} className="chant-count">
-              {currentCount}
+              {localCount}
             </button>
           </div>
           <div className="chant-reset">

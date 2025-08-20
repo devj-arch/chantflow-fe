@@ -38,6 +38,18 @@ export const api = createApi({
         credentials: "include",
       })
     }),
+    getChantStats: builder.query({
+      query: ({userId, mantraId}) => ({
+        url:`/chants/user/${userId}/mantra/${mantraId}/today`,
+      })
+    }),
+    logChant: builder.mutation({
+      query: ({userId, mantraId, date, count}) => ({
+        url: '/chants',
+        method: 'POST',
+        body: {userId, mantraId, date, count},
+      })
+    })
   }),
 });
 
@@ -47,5 +59,7 @@ export const {
   useLoginMutation,
   useSignupMutation,
   useGetProfileQuery,
-  useLogoutMutation
+  useLogoutMutation,
+  useGetChantStatsQuery,
+  useLogChantMutation,
 } = api;
